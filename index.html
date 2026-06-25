@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malak Hasan — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f7f7f6;
+      --bg-tertiary: #f2f1ef;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b6b6b;
+      --border: rgba(0,0,0,0.1);
+      --border-md: rgba(0,0,0,0.18);
+      --purple-bg: #EEEDFE;
+      --purple-text: #3C3489;
+      --purple-dot: #7F77DD;
+      --teal-bg: #E1F5EE;
+      --teal-text: #085041;
+      --coral-bg: #FAECE7;
+      --coral-text: #993C1D;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1c;
+        --bg-secondary: #252525;
+        --bg-tertiary: #2e2e2e;
+        --text-primary: #e8e8e8;
+        --text-secondary: #a0a0a0;
+        --border: rgba(255,255,255,0.1);
+        --border-md: rgba(255,255,255,0.18);
+        --purple-bg: #26215C;
+        --purple-text: #CECBF6;
+        --purple-dot: #7F77DD;
+        --teal-bg: #04342C;
+        --teal-text: #9FE1CB;
+        --coral-bg: #4A1B0C;
+        --coral-text: #F5C4B3;
+      }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container { max-width: 700px; margin: 0 auto; }
+
+    /* OPEN TO WORK BANNER */
+    .open-banner {
+      background: linear-gradient(135deg, #e8f5e9, #f3e5f5);
+      border: 0.5px solid #c8e6c9;
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .open-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #4caf50; flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(76,175,80,0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(76,175,80,0.2); }
+      50% { box-shadow: 0 0 0 6px rgba(76,175,80,0.08); }
+    }
+    .open-text { font-size: 13px; color: #2e7d32; font-weight: 500; }
+    .open-roles { font-size: 12px; color: #4a7a4e; margin-top: 1px; }
+
+    /* HERO */
+    .hero {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--purple-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600; font-size: 18px; color: var(--purple-text);
+      flex-shrink: 0;
+    }
+    .hero h1 { font-size: 22px; font-weight: 600; color: var(--text-primary); }
+    .hero .role { font-size: 13px; color: var(--text-secondary); margin-top: 3px; }
+    .hero-summary { font-size: 14px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .links a {
+      font-size: 13px; padding: 5px 12px;
+      border: 0.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: background .12s, color .12s;
+    }
+    .links a:hover { background: var(--bg-secondary); color: var(--text-primary); }
+    .links a.dl-btn {
+      background: var(--purple-bg); color: var(--purple-text);
+      border-color: #C0BAFA; font-weight: 500;
+    }
+    .links a.dl-btn:hover { background: #DDDAFD; }
+
+    /* NAV */
+    .nav {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+    .nav button {
+      font-size: 13px; padding: 6px 16px; border-radius: 20px;
+      border: 0.5px solid transparent;
+      background: transparent; color: var(--text-secondary);
+      cursor: pointer; font-family: inherit;
+      transition: all .15s;
+    }
+    .nav button.active {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border-color: var(--border-md);
+    }
+    .nav button:hover:not(.active) { color: var(--text-primary); background: var(--bg-secondary); }
+
+    /* SECTIONS */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* CARDS */
+    .card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      margin-bottom: 10px;
+    }
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .card-title { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+    .card-sub { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    .badge {
+      font-size: 11px; padding: 3px 10px; border-radius: 20px;
+      white-space: nowrap; flex-shrink: 0;
+      background: var(--purple-bg); color: var(--purple-text); font-weight: 500;
+    }
+    .badge.teal { background: var(--teal-bg); color: var(--teal-text); }
+    .badge.coral { background: var(--coral-bg); color: var(--coral-text); }
+    .badge.gold { background: #FFF8E1; color: #7a5c00; }
+    .bullets { margin-top: 8px; padding-left: 1.1rem; }
+    .bullets li { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 4px; }
+    .role-line { margin-top: 10px; font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 5px; }
+
+    /* TIMELINE */
+    .timeline-item { display: flex; gap: 1rem; }
+    .tl-dot { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--purple-dot); flex-shrink: 0; }
+    .tl-line { width: 1px; background: var(--border); flex: 1; margin-top: 5px; }
+    .tl-body { flex: 1; padding-bottom: 1rem; }
+
+    /* SKILLS */
+    .skill-group { margin-bottom: 1.5rem; }
+    .skill-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; font-weight: 500; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px; padding: 4px 11px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+    }
+    .divider { border: none; border-top: 0.5px solid var(--border); margin: 1.5rem 0; }
+
+    /* CERT */
+    .cert-card { display: flex; align-items: center; gap: 14px; }
+    .cert-icon { font-size: 22px; color: var(--purple-dot); flex-shrink: 0; }
+
+    /* CONTACT FORM */
+    .contact-info-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 0.5px solid var(--border); font-size: 14px; color: var(--text-secondary); }
+    .contact-info-row:last-of-type { border-bottom: none; }
+    .contact-info-row i { font-size: 18px; color: var(--purple-dot); flex-shrink: 0; }
+    .contact-info-row a { color: var(--text-primary); text-decoration: none; }
+    .contact-info-row a:hover { color: var(--purple-dot); }
+
+    /* LANG FLAGS */
+    .lang-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .lang-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-size: 13px; color: var(--text-primary);
+    }
+    .lang-flag { font-size: 20px; }
+
+    /* FOOTER */
+    .footer { text-align: center; margin-top: 2rem; font-size: 12px; color: var(--text-secondary); }
+
+    @media (max-width: 480px) {
+      body { padding: 1rem 0.75rem; }
+      .hero { padding: 1.25rem; }
+      .nav { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- OPEN TO WORK BANNER -->
+    <div class="open-banner">
+      <div class="open-dot"></div>
+      <div>
+        <div class="open-text">Open to opportunities</div>
+        <div class="open-roles">AI Engineer &nbsp;·&nbsp; ML Engineer &nbsp;·&nbsp; Python Developer &nbsp;·&nbsp; Computer Vision Engineer</div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-top">
+        <div class="avatar">MH</div>
+        <div>
+          <h1>Malak Hasan</h1>
+          <div class="role">Computer Engineering Graduate &nbsp;·&nbsp; AI & Computer Vision</div>
+        </div>
+      </div>
+      <p class="hero-summary">
+        Computer Engineering graduate specialising in AI, Machine Learning, and Computer Vision.
+        I design and ship end-to-end intelligent systems — from data preprocessing and model training
+        to backend integration and deployment — across diverse real-world applications.
+      </p>
+      <div class="links">
+        <a href="mailto:malakkhasan@gmail.com"><i class="ti ti-mail" aria-hidden="true"></i>malakkhasan@gmail.com</a>
+        <a href="https://www.linkedin.com/in/malak-hasan-080a28341" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn</a>
+        <a href="https://github.com/Malakhasan5" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>
+        <a href="tel:+96176648355"><i class="ti ti-phone" aria-hidden="true"></i>+961 76 648 355</a>
+        <a href="Malak-Hasan_CV.pdf" download class="dl-btn"><i class="ti ti-download" aria-hidden="true"></i>Download CV</a>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="nav">
+      <button class="active" onclick="show('experience', this)">Experience</button>
+      <button onclick="show('projects', this)">Projects</button>
+      <button onclick="show('skills', this)">Skills</button>
+      <button onclick="show('education', this)">Education</button>
+      <button onclick="show('funfacts', this)">Fun Facts ✨</button>
+      <button onclick="show('contact', this)">Contact</button>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div id="experience" class="section active">
+      <div class="timeline-item">
+        <div class="tl-dot"><div class="dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Flutter Mobile Development Intern</div>
+                <div class="card-sub">Coding and Create &nbsp;·&nbsp; Jul 2025 – Aug 2025</div>
+              </div>
+              <span class="badge">Mobile</span>
+            </div>
+            <ul class="bullets">
+              <li>Built cross-platform mobile UI screens using Flutter and Dart for iOS and Android across multiple app features.</li>
+              <li>Implemented responsive design patterns that resolved layout inconsistencies across device sizes.</li>
+              <li>Optimised app performance by identifying and resolving loading bottlenecks, reducing startup delays.</li>
+              <li>Collaborated in an Agile team to support feature implementation, unit testing, and debugging cycles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot"><div class="dot"></div></div>
+        <div class="tl-body">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">AI BootCamp Trainee</div>
+                <div class="card-sub">SprintOS & GDG Coast Lebanon &nbsp;·&nbsp; Jul 2025</div>
+              </div>
+              <span class="badge teal">AI / ML</span>
+            </div>
+            <ul class="bullets">
+              <li>Completed an intensive 2-week AI bootcamp covering machine learning and deep learning fundamentals.</li>
+              <li>Built a stomach cancer detection system as a team project — contributed across data preprocessing, CNN architecture, training, and evaluation using TensorFlow and Keras.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="projects" class="section">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Stomach Cancer Detection System</div>
+            <div class="card-sub">Python · TensorFlow · Keras · OpenCV · NumPy</div>
+          </div>
+          <span class="badge teal">Deep Learning</span>
+        </div>
+        <ul class="bullets">
+          <li>Designed a CNN-based medical image classification system for automated stomach cancer detection.</li>
+          <li>Performed data preprocessing, augmentation, and normalisation on medical imaging datasets to improve model generalisation and reduce overfitting.</li>
+          <li>Trained and evaluated classification models in TensorFlow/Keras, achieving reliable diagnostic accuracy on held-out test sets.</li>
+          <li>Integrated the trained model into an end-to-end inference pipeline; collaborated on validation and final presentation.</li>
+        </ul>
+        <div class="role-line">
+          <i class="ti ti-user-check" style="font-size:14px;" aria-hidden="true"></i>
+          Data Preprocessing · Model Training & Evaluation · Workflow Integration
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">SPARK – Virtual Lab Assistant</div>
+            <div class="card-sub">Python · Flask · Google Gemini 2.5 Flash · OpenCV · MediaPipe · JS · HTML/CSS</div>
+          </div>
+          <span class="badge coral">Computer Vision</span>
+        </div>
+        <ul class="bullets">
+          <li>Designed an AI-powered chemistry lab safety system for Lebanese schools with real-time PPE compliance monitoring, QR-based chemical identification, and pour gesture detection via MediaPipe.</li>
+          <li>Built a ChemAI conversational assistant using Google Gemini for chemistry Q&A, live camera frame analysis, and chemical compatibility checking.</li>
+          <li>Implemented a virtual lab environment with hand tracking and a full-body lab avatar using MediaPipe Pose and FaceMesh.</li>
+          <li>Architected a single-page Flask app with threaded camera processing, voice input via Web Speech API, and a unified real-time backend pipeline.</li>
+        </ul>
+        <div class="role-line">
+          <i class="ti ti-user-check" style="font-size:14px;" aria-hidden="true"></i>
+          System Architecture · AI Integration · Computer Vision · Frontend & Backend
+        </div>
+        <div style="margin-top: 14px;">
+          <div class="skill-label" style="margin-bottom: 8px;">Screenshots</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+            <img src="spark1.png" alt="Virtual Lab dashboard with QR detection and scientist avatar" onclick="openImg(this.src)" style="width:100%; border-radius:var(--radius-md); border:0.5px solid var(--border); cursor:pointer; object-fit:cover; height:90px;" />
+            <img src="spark2.png" alt="PPE glove detection via live camera" onclick="openImg(this.src)" style="width:100%; border-radius:var(--radius-md); border:0.5px solid var(--border); cursor:pointer; object-fit:cover; height:90px;" />
+            <img src="spark3.png" alt="ChemAI Assistant chat interface" onclick="openImg(this.src)" style="width:100%; border-radius:var(--radius-md); border:0.5px solid var(--border); cursor:pointer; object-fit:cover; height:90px;" />
+            <img src="spark4.png" alt="Chemical Checker compatibility tool" onclick="openImg(this.src)" style="width:100%; border-radius:var(--radius-md); border:0.5px solid var(--border); cursor:pointer; object-fit:cover; height:90px;" />
+            <img src="spark5.png" alt="Periodic table element viewer" onclick="openImg(this.src)" style="width:100%; border-radius:var(--radius-md); border:0.5px solid var(--border); cursor:pointer; object-fit:cover; height:90px;" />
+            <img src="spark6.png" alt="Virtual experiment visual effect" onclick="openImg(this.src)" style="width:100%; border-radius:var(--radius-md); border:0.5px solid var(--border); cursor:pointer; object-fit:cover; height:90px;" />
+          </div>
+          <div style="font-size:11px; color:var(--text-secondary); margin-top:6px;">Click any image to enlarge</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
+      <img id="lightbox-img" src="" alt="Enlarged screenshot" style="max-width:90vw; max-height:90vh; border-radius:var(--radius-lg);" />
+    </div>
+
+    <!-- SKILLS -->
+    <div id="skills" class="section">
+      <div class="card">
+        <div class="skill-group">
+          <div class="skill-label">Languages</div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Dart</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Frameworks & Libraries</div>
+          <div class="tags">
+            <span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">OpenCV</span>
+            <span class="tag">Flask</span><span class="tag">Flutter</span><span class="tag">NumPy</span><span class="tag">MediaPipe</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">AI / ML</div>
+          <div class="tags">
+            <span class="tag">Machine Learning</span><span class="tag">Deep Learning</span>
+            <span class="tag">Computer Vision</span><span class="tag">CNN</span>
+            <span class="tag">Image Classification</span><span class="tag">Transfer Learning</span>
+            <span class="tag">Data Preprocessing</span><span class="tag">Model Training & Evaluation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Mobile Development</div>
+          <div class="tags">
+            <span class="tag">Cross-Platform UI</span><span class="tag">Responsive Design</span><span class="tag">Performance Optimisation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-label">Tools & Practices</div>
+          <div class="tags">
+            <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Agile Collaboration</span>
+            <span class="tag">Unit Testing</span><span class="tag">Debugging</span><span class="tag">Technical Documentation</span>
+          </div>
+        </div>
+        <div class="skill-group" style="margin-bottom:0;">
+          <div class="skill-label">Languages spoken</div>
+          <div class="lang-row">
+            <div class="lang-pill"><span class="lang-flag">🇱🇧</span> Arabic — Native</div>
+            <div class="lang-pill"><span class="lang-flag">🇬🇧</span> English — Fluent</div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="skill-label">Certifications</div>
+        <div class="card cert-card" style="margin-bottom:10px;">
+          <i class="ti ti-certificate cert-icon" aria-hidden="true"></i>
+          <div>
+            <div class="card-title" style="font-size:14px;">Deep Learning Track – AI Summer Sprint Bootcamp</div>
+            <div class="card-sub">SprintOS & GDG Coast Lebanon · 2025</div>
+          </div>
+        </div>
+        <div class="card cert-card">
+          <i class="ti ti-certificate cert-icon" aria-hidden="true"></i>
+          <div>
+            <div class="card-title" style="font-size:14px;">AI & Technology Bootcamp – Techsplore 2025</div>
+            <div class="card-sub">All Girls Code · 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div id="education" class="section">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Lebanese International University</div>
+            <div class="card-sub">Bachelor of Science in Computer Engineering · 2022 – 2026</div>
+          </div>
+          <span class="badge">BSc</span>
+        </div>
+
+        <div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; background: #FFF8E1; border: 0.5px solid #FFE082; border-radius: var(--radius-md); padding: 10px 14px;">
+          <span style="font-size: 20px;">🏆</span>
+          <div>
+            <div style="font-size: 13px; font-weight: 500; color: #7a5c00;">Dean's Honor List</div>
+            <div style="font-size: 12px; color: #9a7a20;">Academic achievement recognition — Lebanese International University</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <div class="skill-label">Relevant coursework</div>
+          <div class="tags" style="margin-top:6px;">
+            <span class="tag">Data Structures & Algorithms</span>
+            <span class="tag">Operating Systems</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Scripting Languages</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Database Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUN FACTS -->
+    <div id="funfacts" class="section">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 10px;">
+        <div style="background: #FFF0F5; border: 0.5px solid #F7C0D4; border-radius: var(--radius-lg); padding: 1rem 1.1rem;">
+          <div style="font-size: 24px; margin-bottom: 8px;">☕</div>
+          <div style="font-size: 13px; font-weight: 500; color: #7a3050; margin-bottom: 4px;">Fuelled by cappuccino</div>
+          <div style="font-size: 13px; color: #a05070; line-height: 1.6;">Best ideas happen one cup at a time.</div>
+        </div>
+        <div style="background: #F0F5FF; border: 0.5px solid #C0CFFA; border-radius: var(--radius-lg); padding: 1rem 1.1rem;">
+          <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
+          <div style="font-size: 13px; font-weight: 500; color: #2a4090; margin-bottom: 4px;">Fast learner</div>
+          <div style="font-size: 13px; color: #4060b0; line-height: 1.6;">Adapts quickly to new tools, teams, and challenges.</div>
+        </div>
+      </div>
+      <div style="background: #F5F0FF; border: 0.5px solid #D0C0F7; border-left: 3px solid #A990E8; border-radius: var(--radius-lg); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 26px; flex-shrink: 0;">✨</span>
+        <div>
+          <div style="font-size: 14px; font-weight: 500; color: #4a2d90; line-height: 1.6;">"Your only limit is YOU."</div>
+          <div style="font-size: 12px; color: #7a60b0; margin-top: 3px;">Malak's motto</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section">
+      <div class="card">
+        <div style="font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px;">Get in touch</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">Open to AI, ML, and Python development roles. Feel free to reach out!</div>
+
+        <div class="contact-info-row">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <span>Email</span>
+          <a href="mailto:malakkhasan@gmail.com" style="margin-left: auto;">malakkhasan@gmail.com</a>
+        </div>
+        <div class="contact-info-row">
+          <i class="ti ti-phone" aria-hidden="true"></i>
+          <span>Phone</span>
+          <a href="tel:+96176648355" style="margin-left: auto;">+961 76 648 355</a>
+        </div>
+        <div class="contact-info-row">
+          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+          <a href="https://www.linkedin.com/in/malak-hasan-080a28341" target="_blank" rel="noopener" style="margin-left: auto;">View profile</a>
+        </div>
+        <div class="contact-info-row">
+          <i class="ti ti-brand-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+          <a href="https://github.com/Malakhasan5" target="_blank" rel="noopener" style="margin-left: auto;">View profile</a>
+        </div>
+
+        <div style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--border); display: flex; justify-content: center;">
+          <a href="Malak-Hasan_CV.pdf" download style="display:inline-flex; align-items:center; gap:8px; background:var(--purple-bg); color:var(--purple-text); border:0.5px solid #C0BAFA; border-radius:var(--radius-md); padding:8px 20px; text-decoration:none; font-size:13px; font-weight:500;">
+            <i class="ti ti-download" aria-hidden="true"></i> Download CV
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">Built with ♥ · Malak Hasan · 2026</div>
+  </div>
+
+  <script>
+    function openImg(src) {
+      var lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      lb.style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+    function show(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
